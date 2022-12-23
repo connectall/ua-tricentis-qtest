@@ -1,0 +1,35 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "comment": {
+        "commentAuthor": "userId",
+        "createdDate": "commentedTime",
+        "updatedDate": "modifiedTime",
+        "commentBody": "content",
+        "commentVisibility": "isPublic"
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "*": "&",
+      "body": "&",
+      "isPublic": {
+        "public": {
+          "#true": "isPublic"
+        },
+        "private": {
+          "#false": "isPublic"
+        }
+      }
+    }
+  },
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "isPublic": "=toBoolean"
+    }
+  }
+  ]

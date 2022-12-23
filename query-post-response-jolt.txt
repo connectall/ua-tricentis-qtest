@@ -1,0 +1,83 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "items": {
+        "*": {
+          "id": "result.[&1].&",
+          "*": "result.[&1].&",
+          "properties": {
+            "*": {
+              "*": "result.[&3].fields.&"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "result": {
+        "*": {
+          "id": "result.[&1].&",
+          "*": "result.[&1].&",
+          "fields": {
+            "field_id": {
+              "*": "result.[&3].fields[&].field_id"
+            },
+            "field_value": {
+              "*": "result.[&3].fields[&].field_value"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "result": {
+        "*": {
+          "id": "result.[&1].&",
+          "*": "result.[&1].fields.&",
+          "fields": {
+            "*": {
+              "field_value": "result.[&3].fields.@(1,field_id)"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "totalrecords": "=size(@(1,result))",
+      "result": {
+        "*": {
+          "id": "=toString"
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "totalrecords": "&",
+      "result": {
+        "*": {
+          "id": "result.[&1].&",
+          "fields": "result.[&1].&"
+        }
+      }
+    }
+  },
+  {
+    "operation": "default",
+    "spec": {
+      "totalrecords": 0,
+      "result": []
+    }
+   }
+ ]

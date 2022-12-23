@@ -1,0 +1,45 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "fields": {
+        "*": ["properties[].field_value", "properties[].&"]
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "properties": {
+        "*": {
+          "field_value": {
+            "*": {
+              "$": "properties[0].field_value[]"
+            }
+          },
+          "*": {
+            "$": "properties[0].field_id[]"
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      // because propNames and types are the same length
+      // we can use the index of their array to merge the 
+      // data into a fields array 
+      "properties": {
+        "*": {
+          "field_value": {
+            "*": "properties[&].field_value"
+          },
+          "field_id": {
+            "*": "properties[&].field_id"
+          }
+        }
+      }
+    }
+  }
+]

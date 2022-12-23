@@ -1,0 +1,44 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "id": "&",
+      "properties": {
+        "*": {
+          "*": "fields.&"
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "id": "&",
+      "fields": {
+        "field_id": {
+          "*": "fields[&].field_id"
+        },
+        "field_value": {
+          "*": "fields[&].field_value"
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "id": "&",
+      "fields": {
+        "*": {
+          "field_value": "fields.@(1,field_id)"
+        }
+      }
+    }
+  },
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "id": "=toString"
+    }
+  }
+ ]

@@ -1,0 +1,22 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "*": {
+        "id": "attachments[&1].id",
+        "size": "attachments[&1].size",
+        "name": "attachments[&1].name",
+        "content_type": "attachments[&1].type",
+        "web_url": ["attachments[&1].url",
+         "attachments[&1].downloadUrl"],
+        "created_date": "attachments[&1].createdtime"
+      }
+    }
+  },
+  {
+    "operation": "default",
+    "spec": {
+      "attachments": []
+    }
+  }
+]

@@ -1,0 +1,83 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "metadata": {
+        "*": {
+          "artifact": {
+            "id": "object_type"
+          }
+        }
+      },
+      "fromDate": "Last Modified Date"
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "*": "&",
+      "Last Modified Date": ["\\'&\\'", "modifiedDate"]
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "*": "&",
+      "modifiedDate": ["&", "date"],
+      "'Last Modified Date'": {
+        "$": "queryField"
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "*": "&",
+      "modifiedDate": {
+        "$": "queryDate"
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "*": "&",
+      "queryDate": "@(1,date)"
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "object_type": "&",
+      "queryField": "&",
+      "date": "&",
+      "*": "\\'&'\\"
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "object_type": "&",
+      "queryField": "&",
+      "date": "&",
+      "queryDate": "&",
+      "*": {
+        "$": "queryDate"
+      }
+    }
+  },
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "query": "=join(' > ',@(1,queryField),@(1,queryDate))"
+    }
+  },
+  {
+    "operation": "remove",
+    "spec": {
+      "queryField": "",
+      "queryDate": "",
+      "date": ""
+    }
+  }
+  ]

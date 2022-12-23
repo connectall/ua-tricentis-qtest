@@ -1,0 +1,13 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "id": "id",
+      "size": "size",
+      "name": "fileName",
+      "content_type": "type",
+      "web_url": ["url", "downloadUrl"],
+      "created_date": "createdtime"
+    }
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "attachment": {
+        "name": "headers.File-Name",
+        "type": "body.multipart-formdata.mimeType"
+      }
+    }
+  },
+  {
+    "operation": "default",
+    "spec": {
+      "body": {
+        "multipart-formdata": {
+          "contentKey": "file"
+        }
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data",
+        "Accept": "*/*",
+        "File-Name": "default"
+      }
+    }
+  }
+]
